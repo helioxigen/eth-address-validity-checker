@@ -1,11 +1,11 @@
-const path = require("path")
+const path = require("path");
 
 module.exports = {
     entry: ["./src/index.js"],
 
     output: {
         path: path.resolve(__dirname, "public"),
-        filename: "bundle.js",
+        filename: "bundle.js"
     },
 
     module: {
@@ -14,34 +14,11 @@ module.exports = {
                 test: /\.(js|jsx)$/,
                 exclude: /node_modules/,
                 include: path.join(__dirname, "src"),
-                use: [
-                    {
-                        loader: "babel-loader",
-                        options: {
-                            presets: [
-                                [
-                                    "@babel/preset-env",
-                                    {
-                                        targets: ["> 1%"]
-                                    }
-                                ],
-                                "@babel/preset-react"
-                            ],
-                            plugins: [
-                                "@babel/plugin-proposal-class-properties"
-                            ],
-                            cacheDirectory: true
-                        }
-                    }
-                ]
+                use: "babel-loader"
             },
             {
                 test: /\.scss$/,
-                use: [
-                    "style-loader",
-                    "css-loader",
-                    "sass-loader"
-                ]
+                use: ["style-loader", "css-loader", "sass-loader"]
             }
         ]
     },
@@ -50,7 +27,10 @@ module.exports = {
         extensions: [".js", ".jsx"]
     },
 
-    devtool: process.env.NODE_ENV === "production" ? "nosources-source-map" : "eval-source-map",
+    devtool:
+        process.env.NODE_ENV === "production"
+            ? "nosources-source-map"
+            : "eval-source-map",
 
     devServer: {
         port: 3000,
@@ -59,4 +39,4 @@ module.exports = {
             ignored: /node_modules|public/
         }
     }
-}
+};

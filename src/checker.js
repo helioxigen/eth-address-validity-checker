@@ -37,7 +37,7 @@ export const isAddress = address => {
  */
 const isChecksumAddress = address => {
     // Check each case
-    address = address.replace("0x", "");
+    address = address.replace(/0x/i, "");
     var addressHash = sha3(address.toLowerCase());
     for (var i = 0; i < 40; i++) {
         // the nth letter should be uppercase if the nth digit of casemap is 1

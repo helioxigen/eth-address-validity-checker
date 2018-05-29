@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { isAddress } from "./utils";
+import { isAddress } from "./checker";
 import { checkValidity, clearValidity, handleAddressChange } from "./store";
 
 class App extends React.Component {
@@ -27,7 +27,7 @@ class App extends React.Component {
             <div className="App__container">
                 <div className="Form__container">
                     <form onSubmit={this.handleSubmit}>
-                        <h3>Eth address validity checker</h3>
+                        <h3>Ethereum address validity checker</h3>
                         <h5
                             className={`Form__validity Form__validity--${
                                 isValid !== null && !isValid ? "show" : "hide"
